@@ -1,0 +1,373 @@
+/* Importing Google Fonts - FUGAZ ONE and NUNITO. */
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito:wght@200&display=swap");
+
+/* || Basic Reset. */
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* || CSS Variables. */
+:root {
+	/* FONTS */
+	--FONT-FAMILY-HEADINGS: "Fugaz One", sans-serif;
+	--FONT-FAMILY: "Nunito", sans-serif;
+	--FONT-SIZE: clamp(1rem, 2.2vh, 1.5rem);
+
+	/* COLORS */
+	--BG-COLOR: orange;
+	--BG-COLOR-FADE: rgb(253, 221, 162);
+	--BG-IMAGE: linear-gradient(
+		to bottom,
+		var(--BG-COLOR),
+		var(--BG-COLOR-FADE)
+	);
+	--BODY-BG-COLOR: white;
+	--NAV-BG-COLOR: white;
+	--FONT-COLOR: black;
+	--HEADER-TITLE-BG-COLOR: black;
+	--HEADER-TITLE-FONT-COLOR: white;
+	--LINK-COLOR: black;
+	--LINK-HOVER-COLOR: darkorange;
+	--LINK-ACTIVE-COLOR: rgb(197, 79, 0);
+	--HIGHLIGHT-COLOR: green;
+
+	/* ANIMATION */
+	--ANIMATION-H2-FONT-COLOR: white;
+	--ANIMATION-BG-COLOR: rgba(0, 100, 0, 0.596);
+	--ANIMATION-PADDING: 0.5rem 1rem;
+	--ANIMATION-TEXT-SHADOW: 2px 2px 5px black;
+
+	/* PADDINGS */
+	--HEADER-TITLE-PADDING: 0.5rem;
+	--NAV-BAR-PADDING: 0.5rem;
+	--FOOTER-PADDING: 0.5rem 0;
+    --ABOUT-TRIVIA-SECTION-PADDING: 0 1rem;
+
+	/* BORDERS */
+	--BORDER-COLOR: black;
+	--BORDER: 1px solid var(--BORDER-COLOR);
+	--BORDER-RADIUS: 15px;
+
+	/* BOX SHADOW */
+	--NAV-BOX-SHADOW: 0px 0px 5px black;
+	--BODY-BOX-SHADOW: 0px 0px 5px black;
+}
+
+/* || General Styles. */
+html {
+	background-color: var(--BG-COLOR);
+	background-image: var(--BG-IMAGE);
+	background-repeat: no-repeat;
+	font-family: var(--FONT-FAMILY);
+	font-size: var(--FONT-SIZE);
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--BODY-BG-COLOR);
+	color: var(--FONT-COLOR);
+	margin: 0 auto;
+	min-height: 100vh;
+	max-width: 800px;
+	border-left: var(--BORDER);
+	border-right: var(--BORDER);
+	box-shadow: var(--BODY-BOX-SHADOW);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--FONT-FAMILY-HEADINGS);
+	letter-spacing: 0.1em;
+}
+
+h2,
+h3 {
+	color: var(--HIGHLIGHT-COLOR);
+}
+
+/* Header Styles */
+.header_section {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+.header_h1 {
+	text-align: center;
+	background-color: var(--HEADER-TITLE-BG-COLOR);
+	color: var(--HEADER-TITLE-FONT-COLOR);
+	padding: var(--HEADER-TITLE-PADDING);
+}
+
+/* Header - Navigation Menu Styles */
+.header_navigation_bar_ul {
+	list-style-type: none;
+
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: nowrap;
+	padding: var(--NAV-BAR-PADDING);
+	border-bottom: var(--BORDER);
+	box-shadow: var(--NAV-BOX-SHADOW);
+	background-color: var(--NAV-BG-COLOR);
+}
+
+/* Header - Navigation Links Styling */
+.header_navigation_bar_ul li a:any-link {
+	color: var(--LINK-COLOR);
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.header_navigation_bar_ul li a:hover {
+	color: var(--LINK-HOVER-COLOR);
+
+	/* Transformation does not works on inline level element, that's why we have to set the display property of <a> element to inline-block and after that we can apply transformation on it. */
+	display: inline-block;
+	transform: scale(1.2);
+	transition: all 0.4s ease-in-out;
+}
+
+.header_navigation_bar_ul li a:active {
+	color: var(--LINK-ACTIVE-COLOR);
+}
+
+/* || Main Styling */
+
+/* Main - h2 (Welcome) Animation Styling */
+
+.welcome-animation {
+	position: absolute;
+	color: var(--ANIMATION-H2-FONT-COLOR);
+	background-color: var(--ANIMATION-BG-COLOR);
+	padding: var(--ANIMATION-PADDING);
+	letter-spacing: 0.1rem;
+	text-shadow: 2px 2px 5px var(--BORDER-COLOR);
+	margin-left: 20px;
+
+	animation-name: welcomeAnimation;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+
+	top: 40px;
+}
+
+/* Defining Animation using @Keyframes. */
+@keyframes welcomeAnimation {
+	0% {
+		top: 40px;
+		transform: skew(0deg, -5deg) scale(0);
+	}
+
+	80% {
+		top: 40px;
+		transform: skew(10deg, -5deg) scale(1.2);
+	}
+
+	100% {
+		top: 140px;
+		transform: skew(-10deg, -5deg) scale(1);
+	}
+}
+
+/* || Menu Styling */
+
+/* Scroll Margin */
+#menu_section {
+	scroll-margin-top: 8rem;
+}
+
+/* Menu Section, About Section, Taco Trivia Section and Contact Us Section - H2 and Hr (Horizontal Rule) Styling */
+.menu_section_h2,
+.about_section_h2,
+.taco_trivia_h2,
+.contact_us_h2 {
+	text-align: center;
+	margin: 2rem;
+}
+.menu_section_h2_hr,
+.about_section_h2_hr,
+.taco_trivia_h2_hr,
+.contact_us_h2_hr{
+	width: 8%;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+
+/* Menu Section - Menu Items Styling */
+.menu_items_article {
+	display: grid;
+	column-gap: 1rem;
+	row-gap: 1rem;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+}
+
+.menu_items_article figure {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.menu_items_article figure figcaption {
+	text-align: center;
+}
+
+/* Price Table Styles */
+thead,
+tbody,
+tfoot,
+tr {
+	display: contents;
+}
+
+.price_table {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas:
+		"header1 header2 header2"
+		"tacoCrunchy crunchy1 crunchy1price"
+		"tacoCrunchy crunchy2 crunchy2price"
+		"tacoCrunchy crunchy3 crunchy3price"
+		"tacoSoft soft1 soft1price"
+		"tacoSoft soft2 soft2price"
+		"tacoSoft soft3 soft3price"
+		"chipsAndSalsa chipsAndSalsa chipsAndSalsa";
+
+	gap: 0.1em;
+	margin: 1em;
+}
+
+.price_table_items_row_header1 {
+	grid-area: tacoCrunchy;
+}
+
+.price_table_items_row_header2 {
+	grid-area: tacoSoft;
+}
+
+.price_table_items_last_row {
+	grid-area: chipsAndSalsa;
+}
+
+.price_table_items_row_header1,
+.price_table_items_row_header2,
+.price_table_items_last_row,
+.price_table_headers {
+	color: var(--HIGHLIGHT-COLOR);
+	font-weight: bold;
+	height: 100%;
+	display: grid;
+	place-content: center;
+}
+
+.price_table_headers,
+.price_table_items {
+	width: 100%;
+	padding: 1rem;
+	border: medium ridge var(--BORDER-COLOR);
+}
+
+.price_table_items {
+	display: grid;
+	place-content: center;
+}
+
+thead th:first-child {
+	border-top-left-radius: var(--BORDER-RADIUS);
+}
+
+thead th:last-child {
+	border-top-right-radius: var(--BORDER-RADIUS);
+}
+
+tfoot tr td {
+	border-bottom-left-radius: var(--BORDER-RADIUS);
+	border-bottom-right-radius: var(--BORDER-RADIUS);
+}
+
+/* || About Page Styles */
+/* Scroll Margin */
+#aboutSection {
+	scroll-margin-top: 8rem;
+}
+
+/* About Section - Paragraph Styles */
+.about_section_description{
+    padding: var(--ABOUT-TRIVIA-SECTION-PADDING);
+    /* font-weight: bold; */
+}
+
+/* Back To Top - Button Styles */
+.back_to_top {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: white;
+}
+
+/* || Taco Trivia Section */
+.trivia_questions{
+    padding: var(--ABOUT-TRIVIA-SECTION-PADDING);
+    /* font-weight: bold; */
+}
+
+.trivia_questions p{
+    color: var(--HIGHLIGHT-COLOR);
+    /* font-weight: bold; */
+    
+}
+
+/* || Contact Us Section Styles */
+/* Scroll Margin */
+#contactUs {
+	scroll-margin-top: 8rem;
+}
+.contact_us_form{
+    display: grid;
+    padding: var(--ABOUT-TRIVIA-SECTION-PADDING);
+}
+
+label{
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+input, 
+textarea, 
+button{
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: var(--BORDER-RADIUS);
+}
+
+button{
+    background-color: var(--HIGHLIGHT-COLOR);
+    color: var(--HEADER-TITLE-FONT-COLOR);
+}
+
+
+/* Footer Styles */
+.footer_section {
+	position: sticky;
+	bottom: 0px;
+	text-align: center;
+	color: var(--HEADER-TITLE-FONT-COLOR);
+	background-color: var(--HEADER-TITLE-BG-COLOR);
+	padding: var(--FOOTER-PADDING);
+}
